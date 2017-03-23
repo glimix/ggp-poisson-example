@@ -37,13 +37,13 @@ cov = SumCov(list(covs.values()))
 ggp = ExpFamGP(y, 'poisson', mean, cov)
 
 def print_info(ggp, mean, covs):
-    print('LML: %.6f' % ggp.feed().value())
+    print('LML: %.8f' % ggp.feed().value())
     print('Fixed-effect sizes:', mean.effsizes)
     print('Variances:')
     for i in range(3):
         prefix = 'covariance%d' % i
-        print('  %s: %.5f' % (prefix, covs[prefix].scale))
-    print('  Eye        : %.5f' % covs['eye'].scale)
+        print('  %s: %.8f' % (prefix, covs[prefix].scale))
+    print('  Eye        : %.8f' % covs['eye'].scale)
     print()
 
 print('--- Model before optimization ---')

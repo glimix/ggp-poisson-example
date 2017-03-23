@@ -12,7 +12,7 @@ def create_phenotype(covariates, covariances):
     for K in covariances:
         y += random.multivariate_normal(zeros(nsamples), K)
 
-    y /= 10.
+    y /= 5.
 
     return asarray([random.poisson(exp(yi)) for yi in y])
 
@@ -31,7 +31,7 @@ def create_covariates(n, nc):
                         axis=1)
     return covariates
 
-n = 100
+n = 250
 
 
 covariates = create_covariates(n, 2)
@@ -42,8 +42,8 @@ K2 = create_covariance(n, 2)
 
 y = create_phenotype(covariates, [K0, K1, K2])
 
-savetxt('pheno.csv', y, delimiter=',', fmt='%.4e')
-savetxt('covariates.csv', covariates, delimiter=',', fmt='%.4e')
-savetxt('covariance0.csv', K0, delimiter=',', fmt='%.4e')
-savetxt('covariance1.csv', K1, delimiter=',', fmt='%.4e')
-savetxt('covariance2.csv', K2, delimiter=',', fmt='%.4e')
+savetxt('pheno.csv', y, delimiter=',')
+savetxt('covariates.csv', covariates, delimiter=',')
+savetxt('covariance0.csv', K0, delimiter=',')
+savetxt('covariance1.csv', K1, delimiter=',')
+savetxt('covariance2.csv', K2, delimiter=',')
